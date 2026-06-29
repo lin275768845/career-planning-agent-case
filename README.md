@@ -89,6 +89,13 @@ These checks are local. They require no secrets, no provider keys, no browser
 session, no platform login, and no external side effects:
 
 ```bash
+python3 scripts/validate_public_mirror.py
+python3 -m unittest discover -s tests
+```
+
+The lower-level checks are also available:
+
+```bash
 python3 -m json.tool schemas/opportunity_verdict.schema.json >/dev/null
 python3 -m json.tool schemas/review_decision.schema.json >/dev/null
 python3 -m json.tool schemas/data_health_report.schema.json >/dev/null
@@ -149,6 +156,8 @@ The public mirror focuses on the agent design:
 | Advisory artifact schemas | Implemented | Opportunity Verdict, Review Decision, and Data Health Report schemas exist in `schemas/`. |
 | Static eval definitions | Implemented | 10 no-side-effect eval cases are defined in JSONL. |
 | Static eval checker | Implemented | Local checker validates eval definitions and safety invariants. |
+| Public validation harness | Implemented | `scripts/validate_public_mirror.py` and `tests/` validate schemas, evals, demo safety markers, and public gates. |
+| Demo-only helper package | Implemented | `career_planning_agent_public/` contains standard-library gate and rule helpers for public artifacts only. |
 | Runtime eval integration | Out of scope | This public mirror validates definitions and demo artifacts, not private runtime behavior. |
 | Sanitized demo run | Implemented | Demo artifacts are deterministic, fictional, and explicitly simulated. |
 | Chinese README and selected docs | Implemented | Chinese mirror docs live in `README.zh-CN.md` and `docs/zh-CN/`. |
@@ -178,6 +187,8 @@ or personal data required to run the private app end to end.
 | Artifact | Purpose |
 | --- | --- |
 | [docs/PUBLIC_MIRROR_SCOPE.md](docs/PUBLIC_MIRROR_SCOPE.md) | Scope and runability boundary for this public mirror. |
+| [docs/REVIEWER_GUIDE.md](docs/REVIEWER_GUIDE.md) | Suggested review path and validation artifacts. |
+| [docs/DEMO_WALKTHROUGH.md](docs/DEMO_WALKTHROUGH.md) | Step-by-step walkthrough of the sanitized fictional demo run. |
 | [docs/STRATEGY_PANEL.md](docs/STRATEGY_PANEL.md) | High-level product doctrine for human-owned career decisions. |
 | [docs/ARCHITECTURE_OVERVIEW.md](docs/ARCHITECTURE_OVERVIEW.md) | Visual workflow, gates, observability, and public/private boundary guide. |
 | [docs/03_WORKFLOW.md](docs/03_WORKFLOW.md) | Workflow stages from user model to review decision. |
@@ -194,6 +205,10 @@ or personal data required to run the private app end to end.
 | [schemas/data_health_report.schema.json](schemas/data_health_report.schema.json) | Data completeness and blocked-action schema contract. |
 | [evals/career_planning_eval_cases.jsonl](evals/career_planning_eval_cases.jsonl) | No-side-effect eval case definitions. |
 | [evals/check_career_planning_eval_cases.py](evals/check_career_planning_eval_cases.py) | Local static checker. |
+| [scripts/validate_public_mirror.py](scripts/validate_public_mirror.py) | Standard-library public mirror validator. |
+| [tests/](tests/) | Unit tests for schemas, eval cases, demo safety markers, and gate helpers. |
+| [career_planning_agent_public/](career_planning_agent_public/) | Demo-only public helper package for gate and rule validation. |
+| [.github/workflows/validate.yml](.github/workflows/validate.yml) | GitHub Actions validation workflow with no secrets or deployment. |
 | [demo_run/demo_output_summary.md](demo_run/demo_output_summary.md) | Sanitized simulated demo summary. |
 | [docs/case_study_career_planning_week3.md](docs/case_study_career_planning_week3.md) | Public case-study draft. |
 
@@ -201,11 +216,15 @@ or personal data required to run the private app end to end.
 
 ```text
 .
+├── career_planning_agent_public/ # Demo-only validation helpers
 ├── demo_run/                # Sanitized simulated demo artifacts
 ├── docs/                    # Curated architecture, workflow, and safety docs
 │   └── zh-CN/               # Chinese mirror docs for portfolio review
 ├── evals/                   # Static no-side-effect eval cases and checker
+├── scripts/                 # Public mirror validation harness
 ├── schemas/                 # Advisory artifact schema contracts
+├── tests/                   # Standard-library unit tests
+├── .github/workflows/       # Validation workflow; no deployment or secrets
 ├── README.md
 └── README.zh-CN.md
 ```
