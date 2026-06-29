@@ -1,0 +1,26 @@
+{
+  "schema_version": "2026-06-week3",
+  "demo_id": "DEMO-STRATEGY-001",
+  "simulated": true,
+  "sanitized": true,
+  "strategy_status": "draft",
+  "candidate_name": "Fictional Candidate A",
+  "paths": [
+    {
+      "path_id": "DEMO-PATH-001",
+      "title": "AI workflow operations",
+      "recommendation": "Explore roles that combine product operations, AI workflow design, and internal tooling adoption.",
+      "risks": [
+        "role may be too execution-heavy",
+        "AI substance may be shallow"
+      ],
+      "discovery_keywords": [
+        "AI operations",
+        "workflow automation",
+        "product operations"
+      ]
+    }
+  ],
+  "human_review_required": true,
+  "applied_to_active_strategy": false
+}

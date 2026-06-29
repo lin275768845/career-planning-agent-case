@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/career-planning/opportunity_verdict.schema.json",
+  "title": "Opportunity Verdict Draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verdict_id",
+    "opportunity_id",
+    "source_type",
+    "source_sanitized",
+    "input_completeness",
+    "verdict",
+    "confidence",
+    "fit_summary",
+    "evidence",
+    "risks",
+    "missing_information",
+    "avoid_signal_conflicts",
+    "recommended_next_step_draft",
+    "human_review_required",
+    "prohibited_actions",
+    "external_side_effects",
+    "approved_opportunity_created",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "2026-06-week3" },
+    "verdict_id": { "type": "string", "minLength": 1 },
+    "opportunity_id": { "type": "string", "minLength": 1 },
+    "source_type": {
+      "type": "string",
+      "enum": ["full_jd", "snippet", "manual_note", "simulated_demo"]
+    },
+    "source_sanitized": { "type": "boolean", "const": true },
+    "input_completeness": {
+      "type": "string",
+      "enum": ["complete", "partial", "insufficient"]
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "strong_fit",
+        "fit",
+        "caution",
+        "high_risk",
+        "needs_more_info",
+        "not_enough_signal"
+      ]
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "rationale"],
+      "properties": {
+        "level": { "type": "string", "enum": ["high", "medium", "low"] },
+        "rationale": { "type": "string", "minLength": 1 }
+      }
+    },
+    "fit_summary": { "type": "string", "minLength": 1 },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "summary", "source"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "enum": ["user_model", "strategy", "opportunity_source", "demo"] }
+        }
+      }
+    },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "missing_information": { "type": "array", "items": { "type": "string" } },
+    "avoid_signal_conflicts": { "type": "array", "items": { "type": "string" } },
+    "recommended_next_step_draft": { "type": "string", "minLength": 1 },
+    "human_review_required": { "type": "boolean", "const": true },
+    "prohibited_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "no_auto_apply",
+          "no_auto_message",
+          "no_auto_approve",
+          "no_auto_reject",
+          "no_auto_archive",
+          "no_strategy_overwrite"
+        ]
+      }
+    },
+    "external_side_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["message_sent", "application_submitted", "external_channel_used"],
+      "properties": {
+        "message_sent": { "type": "boolean", "const": false },
+        "application_submitted": { "type": "boolean", "const": false },
+        "external_channel_used": { "type": "boolean", "const": false }
+      }
+    },
+    "approved_opportunity_created": { "type": "boolean", "const": false },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

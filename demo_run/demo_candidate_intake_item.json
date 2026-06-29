@@ -1,0 +1,16 @@
+{
+  "schema_version": "2026-06-week3",
+  "intake_id": "DEMO-INTAKE-001",
+  "opportunity_id": "DEMO-OPP-001",
+  "simulated": true,
+  "sanitized": true,
+  "source_type": "simulated_demo",
+  "company": "ExampleCo Labs",
+  "role_title": "Product Operations AI Analyst",
+  "source_snippet": "Simulated role snippet: support AI workflow pilots, document operating metrics, and coordinate product operations experiments.",
+  "full_jd_available": false,
+  "not_an_application": true,
+  "external_application_submitted": false,
+  "message_sent": false,
+  "human_review_required": true
+}

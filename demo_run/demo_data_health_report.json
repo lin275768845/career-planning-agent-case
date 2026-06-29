@@ -1,0 +1,36 @@
+{
+  "schema_version": "2026-06-week3",
+  "report_id": "DEMO-HEALTH-001",
+  "profile_status": "partial",
+  "context_status": "partial",
+  "strategy_status": "partial",
+  "opportunity_data_status": "partial",
+  "missing_fields": [
+    "compensation",
+    "reporting line",
+    "team scope",
+    "full JD"
+  ],
+  "stale_fields": [],
+  "ambiguity_flags": [
+    "AI responsibility depth is not confirmed",
+    "role ownership may be operational rather than strategic"
+  ],
+  "privacy_warnings": [
+    "demo uses simulated data only",
+    "no exported JSON or private state included"
+  ],
+  "confidence_impact": "Missing compensation and full JD reduce verdict confidence; the role should be reviewed with caution rather than rejected automatically.",
+  "recommended_questions": [
+    "What business metric does this role own?",
+    "How much AI workflow design is hands-on versus coordination?",
+    "What is the compensation band?"
+  ],
+  "blocked_actions": [
+    "auto_apply",
+    "auto_message",
+    "auto_approve",
+    "auto_strategy_overwrite"
+  ],
+  "created_at": "2026-06-29T00:00:00Z"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "2026-06-week3",
+  "demo_id": "DEMO-PROFILE-001",
+  "simulated": true,
+  "sanitized": true,
+  "candidate_name": "Fictional Candidate A",
+  "profile_status": "draft",
+  "summary": "Fictional Candidate A is represented as a product and operations generalist exploring AI-enabled workflow roles.",
+  "strengths": [
+    "structured problem solving",
+    "cross-functional coordination",
+    "workflow design"
+  ],
+  "missing_information": [
+    "real background intentionally omitted",
+    "no real resume content included"
+  ],
+  "human_review_required": true,
+  "applied_to_active_profile": false
+}

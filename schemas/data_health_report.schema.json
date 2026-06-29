@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/career-planning/data_health_report.schema.json",
+  "title": "Career Planning Data Health Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "report_id",
+    "profile_status",
+    "context_status",
+    "strategy_status",
+    "opportunity_data_status",
+    "missing_fields",
+    "stale_fields",
+    "ambiguity_flags",
+    "privacy_warnings",
+    "confidence_impact",
+    "recommended_questions",
+    "blocked_actions",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "2026-06-week3" },
+    "report_id": { "type": "string", "minLength": 1 },
+    "profile_status": { "$ref": "#/$defs/health_value" },
+    "context_status": { "$ref": "#/$defs/health_value" },
+    "strategy_status": { "$ref": "#/$defs/health_value" },
+    "opportunity_data_status": { "$ref": "#/$defs/health_value" },
+    "missing_fields": { "type": "array", "items": { "type": "string" } },
+    "stale_fields": { "type": "array", "items": { "type": "string" } },
+    "ambiguity_flags": { "type": "array", "items": { "type": "string" } },
+    "privacy_warnings": { "type": "array", "items": { "type": "string" } },
+    "confidence_impact": { "type": "string", "minLength": 1 },
+    "recommended_questions": { "type": "array", "items": { "type": "string" } },
+    "blocked_actions": { "type": "array", "items": { "type": "string" } },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "health_value": {
+      "type": "string",
+      "enum": ["complete", "partial", "missing", "stale", "conflicting"]
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "2026-06-week3",
+  "verdict_id": "DEMO-VERDICT-001",
+  "opportunity_id": "DEMO-OPP-001",
+  "source_type": "simulated_demo",
+  "source_sanitized": true,
+  "input_completeness": "partial",
+  "verdict": "caution",
+  "confidence": {
+    "level": "medium",
+    "rationale": "The simulated role is directionally relevant, but the full JD and compensation are missing."
+  },
+  "fit_summary": "ExampleCo Labs Product Operations AI Analyst may fit the AI workflow operations path, but the reviewer should confirm ownership, AI substance, and compensation before advancing.",
+  "evidence": [
+    {
+      "label": "Path fit",
+      "summary": "The role mentions AI workflow pilots and product operations experiments.",
+      "source": "demo"
+    },
+    {
+      "label": "Data sufficiency",
+      "summary": "The source is a simulated snippet, not a full JD.",
+      "source": "opportunity_source"
+    }
+  ],
+  "risks": [
+    "May be coordination-heavy",
+    "May lack strategic ownership",
+    "Compensation is missing"
+  ],
+  "missing_information": [
+    "full JD",
+    "compensation band",
+    "reporting line",
+    "success metrics"
+  ],
+  "avoid_signal_conflicts": [],
+  "recommended_next_step_draft": "Ask the human reviewer whether to request the full JD and compensation band before advancing.",
+  "human_review_required": true,
+  "prohibited_actions": [
+    "no_auto_apply",
+    "no_auto_message",
+    "no_auto_approve",
+    "no_auto_reject",
+    "no_auto_archive",
+    "no_strategy_overwrite"
+  ],
+  "external_side_effects": {
+    "message_sent": false,
+    "application_submitted": false,
+    "external_channel_used": false
+  },
+  "approved_opportunity_created": false,
+  "created_at": "2026-06-29T00:00:00Z"
+}
