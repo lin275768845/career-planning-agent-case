@@ -4,6 +4,16 @@
   "opportunity_id": "DEMO-OPP-001",
   "simulated": true,
   "sanitized": true,
+  "artifact_safety": {
+    "simulated": true,
+    "sanitized": true,
+    "contains_real_personal_data": false,
+    "contains_real_resume": false,
+    "contains_real_jd_export": false,
+    "contains_real_employer_confidential_data": false,
+    "external_application_submitted": false,
+    "external_message_sent": false
+  },
   "source_type": "simulated_demo",
   "company": "ExampleCo Labs",
   "role_title": "Product Operations AI Analyst",

@@ -3,6 +3,16 @@
   "demo_id": "DEMO-PROFILE-001",
   "simulated": true,
   "sanitized": true,
+  "artifact_safety": {
+    "simulated": true,
+    "sanitized": true,
+    "contains_real_personal_data": false,
+    "contains_real_resume": false,
+    "contains_real_jd_export": false,
+    "contains_real_employer_confidential_data": false,
+    "external_application_submitted": false,
+    "external_message_sent": false
+  },
   "candidate_name": "Fictional Candidate A",
   "profile_status": "draft",
   "summary": "Fictional Candidate A is represented as a product and operations generalist exploring AI-enabled workflow roles.",

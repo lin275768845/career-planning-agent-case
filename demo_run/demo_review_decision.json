@@ -3,6 +3,16 @@
   "review_id": "DEMO-REVIEW-001",
   "related_verdict_id": "DEMO-VERDICT-001",
   "opportunity_id": "DEMO-OPP-001",
+  "artifact_safety": {
+    "simulated": true,
+    "sanitized": true,
+    "contains_real_personal_data": false,
+    "contains_real_resume": false,
+    "contains_real_jd_export": false,
+    "contains_real_employer_confidential_data": false,
+    "external_application_submitted": false,
+    "external_message_sent": false
+  },
   "decided_by": "human",
   "human_confirmed": true,
   "decision": "needs_more_info",

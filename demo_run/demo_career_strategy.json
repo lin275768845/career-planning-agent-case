@@ -3,6 +3,16 @@
   "demo_id": "DEMO-STRATEGY-001",
   "simulated": true,
   "sanitized": true,
+  "artifact_safety": {
+    "simulated": true,
+    "sanitized": true,
+    "contains_real_personal_data": false,
+    "contains_real_resume": false,
+    "contains_real_jd_export": false,
+    "contains_real_employer_confidential_data": false,
+    "external_application_submitted": false,
+    "external_message_sent": false
+  },
   "strategy_status": "draft",
   "candidate_name": "Fictional Candidate A",
   "paths": [
