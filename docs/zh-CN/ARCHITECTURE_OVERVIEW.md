@@ -1,15 +1,14 @@
-# Architecture Overview
+# 架构总览
 
-## Purpose
+## 目的
 
-This document makes the public mirror reviewable without exposing private app
-source code or real career data. It shows the decision workflow, the gate
-placement, the observability objects, and the public/private boundary.
+这份文档让公开镜像在不暴露私有 app 源代码或真实职业数据的前提下可审阅。
+它展示 decision workflow、gate placement、observability objects，以及 public/private boundary。
 
-The architecture is intentionally local-first and human-in-the-loop. The agent
-may create advisory artifacts, but the human owns career commitments.
+架构设计刻意保持 local-first 和 human-in-the-loop。Agent 可以生成 advisory artifacts，
+但职业承诺由人拥有。
 
-## 1. End-To-End Agent Workflow
+## 1. 端到端 Agent Workflow
 
 ```mermaid
 flowchart TD
@@ -24,9 +23,8 @@ flowchart TD
   F --> J["Data Health Report<br/>completeness and blocked actions"]
 ```
 
-The public mirror preserves this workflow as documentation, schemas, evals, and
-simulated demo outputs. It does not include the private app code that runs the
-full workflow.
+公开镜像以文档、schemas、evals 和 simulated demo outputs 的形式保留这条工作流。
+它不包含运行完整 workflow 所需的私有 app code。
 
 ## 2. Gate Placement
 
@@ -44,31 +42,27 @@ flowchart LR
   J --> K["Sanitized public demo only"]
 ```
 
-Key gate logic:
+核心 gate logic：
 
-- Privacy Gate prevents private career data from leaving local scope.
-- Data Sufficiency Gate prevents sparse snippets from becoming confident
-  verdicts.
-- Strategy Ownership Gate prevents AI from overwriting active strategy.
-- Decision Ownership Gate prevents AI from advancing, rejecting, archiving, or
-  committing opportunities.
-- External Side Effect Gate blocks applications, messages, scraping, and hidden
-  platform actions.
-- Public Mirror Gate allows only fictional, simulated, sanitized artifacts into
-  this repository.
+- Privacy Gate 防止私有职业数据离开本地范围。
+- Data Sufficiency Gate 防止稀疏 snippet 变成高置信 verdict。
+- Strategy Ownership Gate 防止 AI 覆盖 active strategy。
+- Decision Ownership Gate 防止 AI 推进、拒绝、归档或 commit 机会。
+- External Side Effect Gate 阻断投递、发消息、抓取和隐藏平台动作。
+- Public Mirror Gate 只允许虚构、模拟、脱敏 artifact 进入本仓库。
 
-## 3. Data Boundary
+## 3. 数据边界
 
-- Private runtime data stays in the local app.
-- Public mirror data is simulated and sanitized.
-- Exported JSON is private by default.
-- Demo artifacts are fictional and explicitly marked simulated.
-- Real profile text, context, resumes, JDs, compensation, offers, employers,
-  application history, and trackers are excluded.
+- 私有 runtime data 留在本地 app。
+- 公开镜像数据是 simulated and sanitized。
+- Exported JSON 默认是私有的。
+- Demo artifacts 使用虚构实体，并明确标记为 simulated。
+- 真实 profile text、context、resume、JD、compensation、offer、employer、
+  application history 和 tracker 都被排除。
 
 ## 4. Review Boundary
 
-AI can draft:
+AI 可以 draft：
 
 - profile summaries
 - strategy options
@@ -76,7 +70,7 @@ AI can draft:
 - review sessions
 - next-step suggestions
 
-Human must confirm:
+Human 必须确认：
 
 - applying profile or context
 - applying or changing strategy
@@ -99,8 +93,7 @@ flowchart TD
   B --> G
 ```
 
-The public mirror makes these objects reviewable through schemas and demo
-artifacts:
+公开镜像通过 schemas 和 demo artifacts 让这些对象可审阅：
 
 - `schemas/opportunity_verdict.schema.json`
 - `schemas/review_decision.schema.json`
@@ -113,7 +106,8 @@ artifacts:
 
 ## 6. Public / Private Separation
 
-The private project contains source code and local workflow docs. This mirror contains only review-safe docs, schemas, evals, and fictional demos. It intentionally excludes production state and personal career data.
+私有项目包含源代码和本地 workflow docs。公开镜像只包含 review-safe docs、schemas、evals 和
+fictional demos。它有意排除 production state 和 personal career data。
 
 ```text
 Private local project
